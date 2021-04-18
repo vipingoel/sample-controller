@@ -1,5 +1,5 @@
 /*
-Copyright The Kubernetes Authors.
+Copyright 2021 The Kubernetes sample-controller Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,14 +19,15 @@ limitations under the License.
 package fake
 
 import (
+	clientset "sample-controller/pkg/generated/clientset/versioned"
+	crdv1alpha1 "sample-controller/pkg/generated/clientset/versioned/typed/compositioncontroller/v1alpha1"
+	fakecrdv1alpha1 "sample-controller/pkg/generated/clientset/versioned/typed/compositioncontroller/v1alpha1/fake"
+
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
 	fakediscovery "k8s.io/client-go/discovery/fake"
 	"k8s.io/client-go/testing"
-	clientset "k8s.io/sample-controller/pkg/generated/clientset/versioned"
-	samplecontrollerv1alpha1 "k8s.io/sample-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1"
-	fakesamplecontrollerv1alpha1 "k8s.io/sample-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1/fake"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.
@@ -76,7 +77,7 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// SamplecontrollerV1alpha1 retrieves the SamplecontrollerV1alpha1Client
-func (c *Clientset) SamplecontrollerV1alpha1() samplecontrollerv1alpha1.SamplecontrollerV1alpha1Interface {
-	return &fakesamplecontrollerv1alpha1.FakeSamplecontrollerV1alpha1{Fake: &c.Fake}
+// CrdV1alpha1 retrieves the CrdV1alpha1Client
+func (c *Clientset) CrdV1alpha1() crdv1alpha1.CrdV1alpha1Interface {
+	return &fakecrdv1alpha1.FakeCrdV1alpha1{Fake: &c.Fake}
 }
