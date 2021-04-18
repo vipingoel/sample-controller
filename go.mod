@@ -1,6 +1,6 @@
 // This is a generated file. Do not edit directly.
 
-module compositioncontroller
+module sample-controller
 
 go 1.16
 

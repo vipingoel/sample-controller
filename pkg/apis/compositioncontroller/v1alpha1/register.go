@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"compositioncontroller/pkg/apis/compositioncontroller"
+	"sample-controller/pkg/apis/compositioncontroller"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
