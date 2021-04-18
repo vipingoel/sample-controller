@@ -23,32 +23,31 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// Foo is a specification for a Foo resource
-type Foo struct {
+// Composition is a specification for a Composition resource
+type Composition struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   FooSpec   `json:"spec"`
-	Status FooStatus `json:"status"`
+	Spec   CompositionSpec   `json:"spec"`
+	Status CompositionStatus `json:"status"`
 }
 
-// FooSpec is the spec for a Foo resource
-type FooSpec struct {
-	DeploymentName string `json:"deploymentName"`
-	Replicas       *int32 `json:"replicas"`
+// CompositionSpec is the spec for a Composition resource
+type CompositionSpec struct {
+	Replicas *int32 `json:"replicas"`
 }
 
-// FooStatus is the status for a Foo resource
-type FooStatus struct {
+// CompositionStatus is the status for a Composition resource
+type CompositionStatus struct {
 	AvailableReplicas int32 `json:"availableReplicas"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // FooList is a list of Foo resources
-type FooList struct {
+type CompositionList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 
-	Items []Foo `json:"items"`
+	Items []Composition `json:"items"`
 }
